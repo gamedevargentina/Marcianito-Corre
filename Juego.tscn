@@ -1,0 +1,150 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Graficos/alienYellow_stand.png" type="Texture" id=1]
+[ext_resource path="res://Graficos/colored_desert.png" type="Texture" id=2]
+[ext_resource path="res://Graficos/sandMid.png" type="Texture" id=3]
+[ext_resource path="res://Pisos.gd" type="Script" id=4]
+[ext_resource path="res://Graficos/cactus.png" type="Texture" id=5]
+[ext_resource path="res://Enemigos.gd" type="Script" id=6]
+[ext_resource path="res://Fondos.gd" type="Script" id=7]
+[ext_resource path="res://Jugador.gd" type="Script" id=8]
+[ext_resource path="res://Juego.gd" type="Script" id=9]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 32.0
+height = 48.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 48 )
+
+[node name="Juego" type="Node2D"]
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 480.0 ]
+}
+
+[node name="Fondos" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="Fondo" type="Sprite" parent="Fondos"]
+position = Vector2( 0, -248 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Fondo2" type="Sprite" parent="Fondos"]
+position = Vector2( 1024, -248 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Jugador" type="Sprite" parent="."]
+position = Vector2( 144, 352 )
+texture = ExtResource( 1 )
+script = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="Jugador"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador/Area2D"]
+position = Vector2( 0, 72 )
+shape = SubResource( 1 )
+
+[node name="Pisos" type="Node2D" parent="."]
+position = Vector2( 0, -16 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Piso1" type="Sprite" parent="Pisos"]
+position = Vector2( 64, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso2" type="Sprite" parent="Pisos"]
+position = Vector2( 192, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso3" type="Sprite" parent="Pisos"]
+position = Vector2( 320, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso4" type="Sprite" parent="Pisos"]
+position = Vector2( 448, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso5" type="Sprite" parent="Pisos"]
+position = Vector2( 576, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso6" type="Sprite" parent="Pisos"]
+position = Vector2( 704, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso7" type="Sprite" parent="Pisos"]
+position = Vector2( 832, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso8" type="Sprite" parent="Pisos"]
+position = Vector2( 960, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso9" type="Sprite" parent="Pisos"]
+position = Vector2( 1088, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso10" type="Sprite" parent="Pisos"]
+position = Vector2( 1216, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso11" type="Sprite" parent="Pisos"]
+position = Vector2( 1344, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso12" type="Sprite" parent="Pisos"]
+position = Vector2( 1472, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso13" type="Sprite" parent="Pisos"]
+position = Vector2( 1600, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso14" type="Sprite" parent="Pisos"]
+position = Vector2( 1728, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso15" type="Sprite" parent="Pisos"]
+position = Vector2( 1856, 560 )
+texture = ExtResource( 3 )
+
+[node name="Piso16" type="Sprite" parent="Pisos"]
+position = Vector2( 1984, 560 )
+texture = ExtResource( 3 )
+
+[node name="Enemigos" type="Node2D" parent="."]
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Cactus" type="Sprite" parent="Enemigos"]
+position = Vector2( 1112, 416 )
+texture = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="Enemigos/Cactus"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigos/Cactus/Area2D"]
+position = Vector2( 0, 16 )
+shape = SubResource( 2 )
+
+[node name="Cactus2" type="Sprite" parent="Enemigos"]
+position = Vector2( 1656, 384 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 5 )
+
+[node name="Cactus3" type="Sprite" parent="Enemigos"]
+position = Vector2( 2144, 416 )
+texture = ExtResource( 5 )
+
+[node name="Cactus4" type="Sprite" parent="Enemigos"]
+position = Vector2( 2224, 416 )
+texture = ExtResource( 5 )
+
+[connection signal="area_entered" from="Enemigos/Cactus/Area2D" to="." method="_perdio"]
